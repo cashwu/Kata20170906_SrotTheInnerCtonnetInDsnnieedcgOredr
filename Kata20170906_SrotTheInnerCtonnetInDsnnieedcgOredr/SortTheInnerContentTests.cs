@@ -31,6 +31,12 @@ namespace Kata20170906_SrotTheInnerCtonnetInDsnnieedcgOredr
             SortTheInnerContentShouldBe("a", "a");
         }
 
+        [TestMethod]
+        public void input_descending_should_return_dsnnieedcg()
+        {
+            SortTheInnerContentShouldBe("dsnnieedcg", "descending");
+        }
+
         private static void SortTheInnerContentShouldBe(string expected, string words)
         {
             var kata = new Kata();
