@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Kata20170906_SrotTheInnerCtonnetInDsnnieedcgOredr
@@ -10,6 +11,18 @@ namespace Kata20170906_SrotTheInnerCtonnetInDsnnieedcgOredr
         public void input_me_should_return_me()
         {
             SortTheInnerContentShouldBe("me", "me");
+        }
+
+        [TestMethod]
+        public void input_for_should_return_for()
+        {
+            SortTheInnerContentShouldBe("for", "for");
+        }
+
+        [TestMethod]
+        public void input_sort_should_return_srot()
+        {
+            SortTheInnerContentShouldBe("srot", "sort");
         }
 
         private static void SortTheInnerContentShouldBe(string expected, string words)
@@ -24,7 +37,9 @@ namespace Kata20170906_SrotTheInnerCtonnetInDsnnieedcgOredr
     {
         public string SortTheInnerContent(string words)
         {
-            return words;
+            var content = words.Substring(1, words.Length - 2);
+            content = string.Concat(content.OrderByDescending(s => s));
+            return words.First() + content + words.Last();
         }
     }
 }
