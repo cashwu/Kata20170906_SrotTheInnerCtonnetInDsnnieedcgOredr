@@ -44,6 +44,24 @@ namespace Kata20170906_SrotTheInnerCtonnetInDsnnieedcgOredr
             SortTheInnerContentShouldBe("i am", "i am");
         }
 
+        [TestMethod]
+        public void input_sort_the_inner_content_in_descending_order()
+        {
+            SortTheInnerContentShouldBe("srot the inner ctonnet in dsnnieedcg oredr", "sort the inner content in descending order");
+        }
+
+        [TestMethod]
+        public void input_wait_for_me()
+        {
+            SortTheInnerContentShouldBe("wiat for me", "wait for me");
+        }
+
+        [TestMethod]
+        public void input_this_kata_is_easy()
+        {
+            SortTheInnerContentShouldBe("tihs ktaa is esay", "this kata is easy");
+        }
+
         private static void SortTheInnerContentShouldBe(string expected, string words)
         {
             var kata = new Kata();
