@@ -37,9 +37,9 @@ namespace Kata20170906_SrotTheInnerCtonnetInDsnnieedcgOredr
     {
         public string SortTheInnerContent(string words)
         {
-            var content = words.Substring(1, words.Length - 2);
-            content = string.Concat(content.OrderByDescending(s => s));
-            return words.First() + content + words.Last();
+            var content = words.Skip(1).Take(words.Length - 2);
+            var sortContent = string.Concat(content.OrderByDescending(s => s));
+            return words.First() + sortContent + words.Last();
         }
     }
 }
