@@ -56,22 +56,17 @@ namespace Kata20170906_SrotTheInnerCtonnetInDsnnieedcgOredr
     {
         public string SortTheInnerContent(string words)
         {
-            var wordsArray = words.Split(' ');
+            return string.Join(" ", words.Split(' ').Select(SortContent));
+        }
 
-            var result = new List<string>();
-            foreach (var word in wordsArray)
+        private static string SortContent(string word)
+        {
+            if (word.Length < 3)
             {
-                if (word.Length < 3)
-                {
-                    result.Add(word);
-                    continue;
-                }
-                var content = word.Skip(1).Take(word.Length - 2);
-                var sortContent = string.Concat(content.OrderByDescending(s => s));
-                result.Add(word.First() + sortContent + word.Last());
+                return word;
             }
 
-            return string.Join(" ", result);
+            return word.First() + string.Concat(word.Skip(1).Take(word.Length - 2).OrderByDescending(s => s)) + word.Last();
         }
     }
 }
