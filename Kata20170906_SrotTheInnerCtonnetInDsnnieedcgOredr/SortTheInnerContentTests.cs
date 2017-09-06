@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -37,6 +38,12 @@ namespace Kata20170906_SrotTheInnerCtonnetInDsnnieedcgOredr
             SortTheInnerContentShouldBe("dsnnieedcg", "descending");
         }
 
+        [TestMethod]
+        public void input_i_am_should_return_i_am()
+        {
+            SortTheInnerContentShouldBe("i am", "i am");
+        }
+
         private static void SortTheInnerContentShouldBe(string expected, string words)
         {
             var kata = new Kata();
@@ -49,13 +56,22 @@ namespace Kata20170906_SrotTheInnerCtonnetInDsnnieedcgOredr
     {
         public string SortTheInnerContent(string words)
         {
-            if (words.Length < 3)
+            var wordsArray = words.Split(' ');
+
+            var result = new List<string>();
+            foreach (var word in wordsArray)
             {
-                return words;
+                if (word.Length < 3)
+                {
+                    result.Add(word);
+                    continue;
+                }
+                var content = word.Skip(1).Take(word.Length - 2);
+                var sortContent = string.Concat(content.OrderByDescending(s => s));
+                result.Add(word.First() + sortContent + word.Last());
             }
-            var content = words.Skip(1).Take(words.Length - 2);
-            var sortContent = string.Concat(content.OrderByDescending(s => s));
-            return words.First() + sortContent + words.Last();
+
+            return string.Join(" ", result);
         }
     }
 }
