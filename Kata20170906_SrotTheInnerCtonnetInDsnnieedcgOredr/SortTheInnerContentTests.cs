@@ -25,6 +25,12 @@ namespace Kata20170906_SrotTheInnerCtonnetInDsnnieedcgOredr
             SortTheInnerContentShouldBe("srot", "sort");
         }
 
+        [TestMethod]
+        public void input_a_should_return_s()
+        {
+            SortTheInnerContentShouldBe("a", "a");
+        }
+
         private static void SortTheInnerContentShouldBe(string expected, string words)
         {
             var kata = new Kata();
@@ -37,6 +43,10 @@ namespace Kata20170906_SrotTheInnerCtonnetInDsnnieedcgOredr
     {
         public string SortTheInnerContent(string words)
         {
+            if (words.Length < 3)
+            {
+                return words;
+            }
             var content = words.Skip(1).Take(words.Length - 2);
             var sortContent = string.Concat(content.OrderByDescending(s => s));
             return words.First() + sortContent + words.Last();
